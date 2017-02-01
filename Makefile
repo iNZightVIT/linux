@@ -1,0 +1,3 @@
+default:
+	@mkdir -p library
+	
