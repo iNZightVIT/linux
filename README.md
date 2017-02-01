@@ -41,3 +41,4 @@ On Ubuntu and Debian, these can be installed via `apt-get`
 ## To Do
 
 - Use a `configure` script to allow specification of script names (e.g., `start_inzight` instead of `inzight`) etc.
+- Add `make` script to create Desktop icons on Ubuntu
