@@ -9,8 +9,17 @@ An installer for iNZightVIT for use on Debian based systems (this includes Ubunt
 git clone https://github.com/iNZightVIT/iNZightVIT-linux.git iNZightVIT
 cd iNZightVIT
 ```
+
 - make sure you have installed the dependencies listed below
-- `make` will attempt to install the necessary R packages
+
+- `make` will attempt to install the necessary R packages, allowing you to run:
+```{bash}
+cd path/to/iNZightVIT
+./inzight   # to start iNZight
+./vit       # to start VIT
+./update    # to update 
+```
+
 - _optional_: `make install` will create a symlink to `/usr/local/bin` so you can run `inzight` or `vit`
     (might require `sudo`)
 
