@@ -13,7 +13,9 @@ default: $(PROFILE) $(INZIGHT) $(VIT)
 	@echo
 	@echo "iNZightVIT has been installed to this directory."
 	@echo "You can either run `inzight` or `vit` from here,"
-	@echo "    or run `make install` to do so from anywhere."
+	@echo "    or run `make install` if you want to be able to start it from anywhere."
+	@echo
+	@echo "To update iNZightVIT, run `./update` from this directory."
 	@echo
 	@echo "NOTE: you can delete the `.clean` directory if you want to,"
 	@echo "    but you won't be able to recover the build files."
@@ -40,3 +42,15 @@ clean:
 	# @rm -rf library
 	@rm .Rprofile inzight vit
 	@mv .clean/* ./ && rm -rf .clean
+
+install:
+	@ln -is $(DIR)/$(INZIGHT) /usr/local/bin/$(INZIGHT)
+	@ln -is $(DIR)/$(VIT) /usr/local/bin/$(VIT)
+	@chmod +x /usr/local/bin/inzight
+
+uninstall:
+	@if [ -L /usr/local/bin/$(INZIGHT) ]; then rm -i /usr/local/bin/$(INZIGHT);
+	@if [ -L /usr/local/bin/$(VIT) ]; then rm -i /usr/local/bin/$(VIT);
+	@echo "iNZight has been uninstalled. To complete, just delete this folder."
+	@echo
+	@echo "Thank you for using iNZight!"
