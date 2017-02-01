@@ -1,3 +1,20 @@
-.libPaths("$PATH")
+.libPaths("LIB_PATH/library")
 options(repos = c("http://r.docker.stat.auckland.ac.nz/R",
-                  "http://cran.stat.auckland.ac.nz"))
+                  "CRAN"))
+
+
+.First <- function() {
+    args <- commandArgs(TRUE)
+    if ("install" %in% args) return()
+    if ("vit" %in% args) {
+        suppressMessages({
+            library(vit)
+            iNZightVIT(disposeR = TRUE)
+        })
+    } else {
+        suppressMessages({
+            library(iNZight)
+            iNZight(disposeR = TRUE)
+        })
+    }
+}
