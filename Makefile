@@ -27,7 +27,7 @@ $(VIT):
 	@cp vit.tmp $@
 	@sed -i 's|INSTALL_DIR|$(DIR)|' $@
 	@chmod +x $@
-	@mkdir -p .clean && v vit.tmp .clean
+	@mkdir -p .clean && mv vit.tmp .clean
 
 clean:
 	# @rm -rf library
