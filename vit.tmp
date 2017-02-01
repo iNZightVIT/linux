@@ -1,1 +1,1 @@
-cd INSTALL_DIR && R --args vit
+cd INSTALL_DIR && R --slave --args vit

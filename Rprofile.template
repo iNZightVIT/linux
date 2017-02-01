@@ -7,8 +7,9 @@ options(repos = c("http://r.docker.stat.auckland.ac.nz/R",
     args <- commandArgs(TRUE)
     if ("install" %in% args) return()
     if ("update" %in% args) {
-        update.packages(ask = FALSE)
-        return()
+        utils::update.packages(ask = FALSE, lib = "LIB_PATH/library")
+        cat(" iNZightVIT is up to date.\n")
+        q("no")
     } else if ("vit" %in% args) {
         suppressMessages({
             library(vit)
