@@ -15,22 +15,19 @@ $(PROFILE):
 	@cp Rprofile.template $@
 	@sed -i 's|LIB_PATH|$(DIR)|' $@
 	@sed -i 's|CRAN|$(CRAN)|' $@
-	@mkdir -p .clean
-	@mv Rprofile.template .clean
+	@mkdir -p .clean && mv Rprofile.template .clean
 
 $(INZIGHT):
 	@cp inzight.tmp $@
 	@sed -i 's|INSTALL_DIR|$(DIR)|' $@
 	@chmod +x $@
-	@mkdir -p .clean
-	@mv inzight.tmp .clean
+	@mkdir -p .clean && mv inzight.tmp .clean
 
 $(VIT):
 	@cp vit.tmp $@
 	@sed -i 's|INSTALL_DIR|$(DIR)|' $@
 	@chmod +x $@
-	@mkdir -p .clean
-	@mv vit.tmp .clean
+	@mkdir -p .clean && v vit.tmp .clean
 
 clean:
 	# @rm -rf library
