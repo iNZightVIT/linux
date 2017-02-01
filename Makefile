@@ -57,10 +57,10 @@ clean:
 install:
 	@ln -is $(DIR)/$(INZIGHT) /usr/local/bin/$(INZIGHT)
 	@ln -is $(DIR)/$(VIT) /usr/local/bin/$(VIT)
-	@chmod +x /usr/local/bin/inzight
-	@chmod +x /usr/local/bin/vit
+	@chmod +x /usr/local/bin/$(INZIGHT)
+	@chmod +x /usr/local/bin/$(VIT)
 	@echo "iNZightVIT has been installed."
-	@echo "You can run either \`inzight\` or \`vit\` from anywhere to launch."
+	@echo "You can run either \`$(INZIGHT)\` or \`$(VIT)\` from anywhere to launch."
 	@echo "To uninstall, simply run \`make uninstall\`."
 
 uninstall:
