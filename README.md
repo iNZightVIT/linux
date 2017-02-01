@@ -1,6 +1,6 @@
 # iNZightVIT Installer for Linux Systems
 
-An installer for iNZightVIT for use on Debian based systems (this includes Ubuntu and its various flavours, such as Linux Mint).
+An installer for iNZightVIT for use on Debian based systems (this includes Ubuntu and its various flavours, such as Linux Mint). Once installed, you will be able to run `inzight` or `vit` to launch each of iNZight or VIT respectively.
 
 ## Quick Start
 
