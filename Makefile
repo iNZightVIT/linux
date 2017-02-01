@@ -10,6 +10,13 @@ default: $(PROFILE) $(INZIGHT) $(VIT)
 	@mkdir -p library
 	@$(RCMD) --slave -e "install.packages(c('vit'), dependencies = TRUE, Ncpus = $(CPUS))" --args install
 	# @$(RCMD) --slave -e "install.packages(c('iNZightRegression', 'iNZightPlots', 'iNZightTS', 'iNZightMR', 'vit', 'iNZightTools', 'FutureLearnData', 'iNZightModules', 'iNZight'), dependencies = TRUE, Ncpus = $(CPUS))"
+	@echo
+	@echo "iNZightVIT has been installed to this directory."
+	@echo "You can either run `inzight` or `vit` from here,"
+	@echo "    or run `make install` to do so from anywhere."
+	@echo
+	@echo "NOTE: you can delete the `.clean` directory if you want to,"
+	@echo "    but you won't be able to recover the build files."
 
 $(PROFILE):
 	@cp Rprofile.template $@
