@@ -6,7 +6,7 @@ options(repos = c("http://r.docker.stat.auckland.ac.nz/R",
 .First <- function() {
     args <- commandArgs(TRUE)
     if ("install" %in% args) return()
-    if ("update") $in$ args) {
+    if ("update" %in% args) {
         update.packages(ask = FALSE)
         return()
     } else if ("vit" %in% args) {
