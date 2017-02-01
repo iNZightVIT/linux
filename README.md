@@ -4,8 +4,8 @@
 
 - clone this repository to your desired location, and `cd` to it
 ```{bash}
-git clone https://github.com/iNZightVIT/iNZightVIT-linux.git _iNZightVIT_
-cd _iNZightVIT_
+git clone https://github.com/iNZightVIT/iNZightVIT-linux.git iNZightVIT
+cd iNZightVIT
 ```
 - make sure you have installed the dependencies listed below
 - `make` will attempt to install the necessary R packages
