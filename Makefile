@@ -8,8 +8,7 @@ CPUS    := $(shell getconf _NPROCESSORS_ONLN)
 
 default: $(PROFILE) $(INZIGHT) $(VIT) update
 	@mkdir -p library
-	@$(RCMD) --slave -e "install.packages(c('vit'), dependencies = TRUE, Ncpus = $(CPUS))" --args install
-	# @$(RCMD) --slave -e "install.packages(c('iNZightRegression', 'iNZightPlots', 'iNZightTS', 'iNZightMR', 'vit', 'iNZightTools', 'FutureLearnData', 'iNZightModules', 'iNZight'), dependencies = TRUE, Ncpus = $(CPUS))"
+	@$(RCMD) --slave -e "install.packages(c('iNZightRegression', 'iNZightPlots', 'iNZightTS', 'iNZightMR', 'vit', 'iNZightTools', 'FutureLearnData', 'iNZightModules', 'iNZight'), dependencies = TRUE, Ncpus = $(CPUS))"
 	@echo
 	@echo "+---------------------------------------------------------------------------"
 	@echo "|"
