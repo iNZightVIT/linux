@@ -2,10 +2,10 @@
 
 ## Quick Start
 
-- clone this repository to your desired location
+- clone this repository to your desired location, and `cd` to it
 ```{bash}
-cd /path/to/install/location
-git clone https://github.com/iNZightVIT/iNZightVIT-linux.git iNZightVIT
+git clone https://github.com/iNZightVIT/iNZightVIT-linux.git _iNZightVIT_
+cd _iNZightVIT_
 ```
 - make sure you have installed the dependencies listed below
 - `make` will attempt to install the necessary R packages
