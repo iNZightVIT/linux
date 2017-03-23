@@ -6,7 +6,7 @@ An installer for iNZightVIT for use on Debian based systems (this includes Ubunt
 
 - clone* this repository to your desired location, and `cd` to it
 ```{bash}
-git clone https://github.com/iNZightVIT/iNZightVIT-linux.git iNZightVIT
+git clone https://github.com/iNZightVIT/linux.git iNZightVIT
 cd iNZightVIT
 ```
 
@@ -24,9 +24,9 @@ cd path/to/iNZightVIT
     (might require `sudo`)
 
 
-\* if you don't have `git` installed, then you can either install it (recommended, `apt-get install git`) or you can [download a ZIP copy of the repository](https://github.com/iNZightVIT/iNZightVIT-linux/archive/master.zip).
+\* if you don't have `git` installed, then you can either install it (recommended, `apt-get install git`) or you can [download a ZIP copy of the repository](https://github.com/iNZightVIT/linux/archive/master.zip).
 ```{bash}
-curl -fsSL https://github.com/iNZightVIT/iNZightVIT-linux/archive/master.zip -o iNZightVIT.zip
+curl -fsSL https://github.com/iNZightVIT/linux/archive/master.zip -o iNZightVIT.zip
 unzip iNZightVIT.zip && rm iNZightVIT.zip && mv iNZightVIT-linux-master iNZightVIT
 ```
 
