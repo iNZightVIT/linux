@@ -1,5 +1,5 @@
 .libPaths("LIB_PATH/library")
-options(repos = c("http://r.docker.stat.auckland.ac.nz/R",
+options(repos = c("https://r.docker.stat.auckland.ac.nz",
                   "CRAN"))
 
 
