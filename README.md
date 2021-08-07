@@ -32,11 +32,13 @@ unzip iNZightVIT.zip && rm iNZightVIT.zip && mv iNZightVIT-linux-master iNZightV
 
 ## Dependencies
 
-On Ubuntu and Debian, these can be installed via `apt-get`
+On Ubuntu and Debian, these can be installed via `apt-get`.
 
-- R: `r-base`
-- GTK2+: `libgtk2.0-dev`
-- XOrg: `xorg-dev`
+- System: `r-base libgtk2.0-dev xorg-dev libudunits2-dev libcurl4-openssl-dev libgdal-dev`
+
+Note R packages can be automatically fetched during installation, but the following list can be handy if you prefer the distro repository.
+
+- R: `r-cran-rgtk2 r-cran-rodbc r-cran-rgl r-cran-car r-cran-reshape2 r-cran-sf r-cran-survey r-cran-httr r-cran-cairodevice r-cran-rjson r-cran-gdata r-cran-fnn r-cran-viridis r-cran-vcd r-cran-dichromat r-cran-gridtext r-cran-pander r-cran-robustbase r-cran-ggrepel r-cran-multcomp r-cran-patchwork r-cran-chron r-cran-gridsvg r-cran-ggbeeswarm r-cran-ggridges`
 
 ## To Do
 
