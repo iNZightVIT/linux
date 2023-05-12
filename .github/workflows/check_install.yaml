@@ -8,14 +8,14 @@ on:
 
 jobs:
   install:
-    runs-on: ${{ matrix.config.os }}
+    runs-on: ${{ matrix.config.os }}-${{ matrix.config.v }
 
     name: ${{ matrix.config.os }} (${{ matrix.config.r }})
 
     strategy:
       matrix:
         config:
-          - { os: ubuntu-22.04, r: release }
+          - { os: ubuntu, v: 22.04, r: release }
 
     steps:
       - uses: actions/checkout@v3
@@ -24,7 +24,7 @@ jobs:
         with:
           r-version: ${{ matrix.config.r }}
 
-      # get dependencies from dependencies.yaml
+      # install deps from {os}/{version}/dependencies.txt
       - name: Install dependencies
         run: |
-          apt-get install -y r-base libgtk2.0-dev xorg-dev
+          sudo apt-get install -y $(cat ${{ matrix.config.os }}/${{ matrix.config.v }}/dependencies.txt)

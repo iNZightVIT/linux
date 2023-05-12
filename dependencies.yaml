@@ -1,7 +1,0 @@
-- os: ubuntu
-  versions:
-    version: 22.04
-    dependencies:
-      - r-base
-      - libgtk2.0-dev
-      - xorg-dev
