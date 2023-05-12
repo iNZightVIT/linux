@@ -15,7 +15,12 @@ jobs:
     strategy:
       matrix:
         config:
-          - { os: ubuntu, v: 22.04, r: release }
+          - {
+              os: ubuntu,
+              v: 22.04,
+              r: release,
+              rspm: "https://packagemanager.rstudio.com/cran/__linux__/jammy/latest",
+            }
 
     steps:
       - uses: actions/checkout@v3

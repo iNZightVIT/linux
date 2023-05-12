@@ -1,6 +1,11 @@
 .libPaths("LIB_PATH/library")
-options(repos = c("https://r.docker.stat.auckland.ac.nz",
-                  "CRAN"))
+options(
+    repos = c(
+        "https://r.docker.stat.auckland.ac.nz",
+        RSPM = Sys.getenv("RSPM"),
+        "CRAN"
+    )
+)
 
 
 .First <- function() {
