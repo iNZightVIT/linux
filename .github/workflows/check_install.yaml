@@ -43,4 +43,4 @@ jobs:
       - name: Check UI loads
         uses: coactions/setup-xvfb@v1
         with:
-          run: Rscript -e 'library(iNZight); ui <- iNZight(); Sys.sleep(10); ui$close()'
+          run: ./inzight
