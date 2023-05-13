@@ -17,5 +17,7 @@ builds <- lapply(os,
 }
 )
 json <- jsonlite::toJSON(do.call(c, builds), auto_unbox = TRUE)
+json_esc <- gsub("\"", "\\\\\"", as.character(json))
 
-cat(json)
+cmd <- paste0("echo \"matrix={\\\"config\\\":", json_esc, "}\" >> $GITHUB_ENV")
+system(cmd)
