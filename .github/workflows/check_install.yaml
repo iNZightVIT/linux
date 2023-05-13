@@ -7,20 +7,49 @@ on:
     - cron: "0 0 1 * *"
 
 jobs:
+  create_job_matrix:
+    name: Generate matrix of install builds
+    runs-on: ubuntu-22.04
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+    run:
+      - uses: actions/checkout@v3
+
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: ${{ matrix.config.r }}
+
+      - name: R script to generate matrix
+        run: |
+          os <- list.dirs("builds", recursive = FALSE, full.names = FALSE)
+          builds <- lapply(os,
+            \(x) {
+              vs <- list.dirs(paste0("builds/", x),
+                recursive = FALSE, full.names = FALSE)
+              lapply(vs, \(v) {
+                l <- list(
+                  os = x,
+                  v = v,
+                  r = "release"
+                )
+                if (file.exists(file.path("builds", x, v, "rspm.txt")))
+                  l$rspm <- readLines(file.path("builds", x, v, "rspm.txt"))[1]
+                l
+              })
+            }
+          )
+          json <- jsonlite::toJSON(do.call(c, builds), auto_unbox = TRUE)
+          cmd <- paste("::set-output name=matrix::{\"config:", json, "}\"", sep = "")
+          system(cmd)
+        shell: Rscript {0}
+
   install:
     runs-on: ${{ matrix.config.os }}-${{ matrix.config.v }}
 
     name: ${{ matrix.config.os }} ${{ matrix.config.v }} (${{ matrix.config.r }})
 
     strategy:
-      matrix:
-        config:
-          - {
-              os: ubuntu,
-              v: 22.04,
-              r: release,
-              rspm: "https://packagemanager.rstudio.com/cran/__linux__/jammy/latest",
-            }
+      matrix: ${{ fromJson(needs.create_job_matrix.outputs.matrix) }}
 
     # set RSPM in env
     env:
@@ -35,7 +64,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          sudo apt-get install -y $(cat ${{ matrix.config.os }}/${{ matrix.config.v }}/dependencies.txt)
+          sudo apt-get install -y builds/$(cat ${{ matrix.config.os }}/${{ matrix.config.v }}/dependencies.txt)
 
       - name: Install iNZight with `make`
         run: make
