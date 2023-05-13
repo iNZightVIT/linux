@@ -25,6 +25,9 @@ jobs:
       - name: Set build matrix
         run: echo "matrix={\"config\":$(Rscript .github/gen_matrix.R)}" >> $GITHUB_ENV
 
+      - name: Print matrix
+        run: cat $GITHUB_ENV
+
   install:
     needs: create_job_matrix
 
