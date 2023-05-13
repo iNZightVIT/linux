@@ -17,3 +17,5 @@ builds <- lapply(os,
 }
 )
 json <- jsonlite::toJSON(do.call(c, builds), auto_unbox = TRUE)
+
+cat(json)

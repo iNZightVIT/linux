@@ -20,7 +20,7 @@ jobs:
           r-version: latest
 
       - name: Set build matrix
-        run: echo "::set-output name=matrix::{\"config:$(Rscript .github/gen_matrix.R)\"}"
+        run: echo "matrix={\"config:$(Rscript .github/gen_matrix.R)\"}" >> $GITHUB_OUTPUT
 
   install:
     needs: create_job_matrix
