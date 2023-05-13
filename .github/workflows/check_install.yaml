@@ -19,30 +19,8 @@ jobs:
         with:
           r-version: latest
 
-      - name: R script to generate matrix
-        run: |
-          install.packages("jsonlite")
-          os <- list.dirs("builds", recursive = FALSE, full.names = FALSE)
-          builds <- lapply(os,
-            \(x) {
-              vs <- list.dirs(paste0("builds/", x),
-                recursive = FALSE, full.names = FALSE)
-              lapply(vs, \(v) {
-                l <- list(
-                  os = x,
-                  v = v,
-                  r = "release"
-                )
-                if (file.exists(file.path("builds", x, v, "rspm.txt")))
-                  l$rspm <- readLines(file.path("builds", x, v, "rspm.txt"))[1]
-                l
-              })
-            }
-          )
-          json <- jsonlite::toJSON(do.call(c, builds), auto_unbox = TRUE)
-          cmd <- paste("::set-output name=matrix::{\"config:", json, "}\"", sep = "")
-          system(cmd)
-        shell: Rscript {0}
+      - name: Set build matrix
+        run: echo "::set-output name=matrix::{\"config:$(Rscript .github/gen_matrix.R)\"}"
 
   install:
     needs: create_job_matrix
