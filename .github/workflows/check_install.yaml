@@ -25,6 +25,16 @@ jobs:
       - name: Set build matrix
         run: echo "matrix={\"config\":$(Rscript .github/gen_matrix.R)}" >> $GITHUB_OUTPUT
 
+  check:
+    name: check output
+    needs: create_job_matrix
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Check matrix
+        run: echo ${{ needs.create_job_matrix.outputs.matrix }}
+
   install:
     needs: create_job_matrix
 
