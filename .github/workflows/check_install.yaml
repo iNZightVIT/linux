@@ -21,6 +21,7 @@ jobs:
 
       - name: R script to generate matrix
         run: |
+          install.packages("jsonlite")
           os <- list.dirs("builds", recursive = FALSE, full.names = FALSE)
           builds <- lapply(os,
             \(x) {
