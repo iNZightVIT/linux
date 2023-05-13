@@ -17,7 +17,7 @@ jobs:
 
       - uses: r-lib/actions/setup-r@v2
         with:
-          r-version: ${{ matrix.config.r }}
+          r-version: latest
 
       - name: R script to generate matrix
         run: |
