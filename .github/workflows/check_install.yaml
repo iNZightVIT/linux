@@ -33,7 +33,7 @@ jobs:
     name: ${{ matrix.config.os }} ${{ matrix.config.v }} (${{ matrix.config.r }})
 
     strategy:
-      matrix: ${{ fromJson(steps.create_job_matrix.outputs.matrix) }}
+      matrix: ${{ fromJson(needs.create_job_matrix.outputs.matrix) }}
 
     # set RSPM in env
     env:
