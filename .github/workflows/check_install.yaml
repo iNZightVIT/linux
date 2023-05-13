@@ -23,7 +23,7 @@ jobs:
         run: Rscript -e 'install.packages("jsonlite")'
 
       - name: Set build matrix
-        run: echo "matrix={\"config\":$(Rscript .github/gen_matrix.R)}" >> $GITHUB_ENV
+        run: echo "matrix={\"config\":$(Rscript .github/gen_matrix.R)}" >> $GITHUB_OUTPUT
 
   install:
     needs: create_job_matrix
@@ -33,7 +33,7 @@ jobs:
     name: ${{ matrix.config.os }} ${{ matrix.config.v }} (${{ matrix.config.r }})
 
     strategy:
-      matrix: ${{ fromJson(needs.create_job_matrix.outputs.matrix) }}
+      matrix: ${{ fromJson(steps.create_job_matrix.outputs.matrix) }}
 
     # set RSPM in env
     env:
