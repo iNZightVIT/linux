@@ -1,4 +1,4 @@
-# install.packages("jsonlite")
+install.packages("jsonlite")
 os <- list.dirs("builds", recursive = FALSE, full.names = FALSE)
 builds <- lapply(os,
 \(x) {
