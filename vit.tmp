@@ -1,2 +1,2 @@
 #!/bin/bash
-cd INSTALL_DIR && R --slave --args vit
+cd INSTALL_DIR && R --slave --no-save --args vit

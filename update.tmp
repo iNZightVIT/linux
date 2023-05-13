@@ -1,2 +1,2 @@
 #!/bin/bash
-cd INSTALL_DIR && R --silent --args update
+cd INSTALL_DIR && R --silent --no-save --args update

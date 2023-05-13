@@ -1,2 +1,2 @@
 #!/bin/bash
-cd INSTALL_DIR && R --silent
+cd INSTALL_DIR && R --silent --no-save
