@@ -1,4 +1,4 @@
-install.packages("jsonlite")
+# install.packages("jsonlite")
 os <- list.dirs("builds", recursive = FALSE, full.names = FALSE)
 builds <- lapply(os,
 \(x) {
@@ -19,8 +19,10 @@ builds <- lapply(os,
 json <- jsonlite::toJSON(do.call(c, builds), auto_unbox = TRUE)
 json_esc <- gsub("\"", "\\\\\"", as.character(json))
 
-cmd <- paste0("echo \"matrix={\\\"config\\\":", json_esc, "}\" >> $GITHUB_ENV")
+cat(json_esc)
 
-print(cmd)
+# cmd <- paste0("echo \"matrix={\\\"config\\\":", json_esc, "}\" >> $GITHUB_ENV")
 
-system(cmd)
+# print(cmd)
+
+# system(cmd)
