@@ -22,8 +22,11 @@ jobs:
       - name: Install jsonlite
         run: Rscript -e 'install.packages("jsonlite")'
 
-      - name: Set build matrix
-        run: echo "matrix={\"config\":$(Rscript .github/gen_matrix.R)}" >> $GITHUB_OUTPUT
+      # - name: Set build matrix
+      #   run: echo "matrix={\"config\":$(Rscript .github/gen_matrix.R)}" >> $GITHUB_OUTPUT
+
+      - name: Set build matrix 2
+        run: echo "matrix={\"config\":\"hello\"}" >> $GITHUB_OUTPUT"
 
   check:
     name: check output
