@@ -33,7 +33,10 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Check matrix
-        run: echo ${{ needs.create_job_matrix.outputs.matrix }}
+        run: |
+          echo "This is the thing:"
+          echo ${{ needs.create_job_matrix.outputs.matrix }}
+          echo "---- end ----"
 
   install:
     needs: create_job_matrix
