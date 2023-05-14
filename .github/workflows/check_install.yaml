@@ -15,18 +15,18 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: r-lib/actions/setup-r@v2
-        with:
-          r-version: latest
+      # - uses: r-lib/actions/setup-r@v2
+      #   with:
+      #     r-version: latest
 
-      - name: Install jsonlite
-        run: Rscript -e 'install.packages("jsonlite")'
+      # - name: Install jsonlite
+      #   run: Rscript -e 'install.packages("jsonlite")'
 
       # - name: Set build matrix
       #   run: echo "matrix={\"config\":$(Rscript .github/gen_matrix.R)}" >> $GITHUB_OUTPUT
 
       - name: Set build matrix 2
-        run: echo "matrix={\"config\":\"hello\"}" >> "$GITHUB_OUTPUT"
+        run: echo "matrix=hello" >> "$GITHUB_OUTPUT"
 
   check:
     name: check output
@@ -43,35 +43,35 @@ jobs:
           echo "$MATRIX"
           echo "---- end ----"
 
-  install:
-    needs: create_job_matrix
+  # install:
+  #   needs: create_job_matrix
 
-    runs-on: ${{ matrix.config.os }}-${{ matrix.config.v }}
+  #   runs-on: ${{ matrix.config.os }}-${{ matrix.config.v }}
 
-    name: ${{ matrix.config.os }} ${{ matrix.config.v }} (${{ matrix.config.r }})
+  #   name: ${{ matrix.config.os }} ${{ matrix.config.v }} (${{ matrix.config.r }})
 
-    strategy:
-      matrix: ${{ fromJson(needs.create_job_matrix.outputs.matrix) }}
+  #   strategy:
+  #     matrix: ${{ fromJson(needs.create_job_matrix.outputs.matrix) }}
 
-    # set RSPM in env
-    env:
-      RSPM: ${{ matrix.config.rspm }}
+  #   # set RSPM in env
+  #   env:
+  #     RSPM: ${{ matrix.config.rspm }}
 
-    steps:
-      - uses: actions/checkout@v3
+  #   steps:
+  #     - uses: actions/checkout@v3
 
-      - uses: r-lib/actions/setup-r@v2
-        with:
-          r-version: ${{ matrix.config.r }}
+  #     - uses: r-lib/actions/setup-r@v2
+  #       with:
+  #         r-version: ${{ matrix.config.r }}
 
-      - name: Install dependencies
-        run: |
-          sudo apt-get install -y builds/$(cat ${{ matrix.config.os }}/${{ matrix.config.v }}/dependencies.txt)
+  #     - name: Install dependencies
+  #       run: |
+  #         sudo apt-get install -y builds/$(cat ${{ matrix.config.os }}/${{ matrix.config.v }}/dependencies.txt)
 
-      - name: Install iNZight with `make`
-        run: make
+  #     - name: Install iNZight with `make`
+  #       run: make
 
-      - name: Check UI loads
-        uses: coactions/setup-xvfb@v1
-        with:
-          run: ./inzight
+  #     - name: Check UI loads
+  #       uses: coactions/setup-xvfb@v1
+  #       with:
+  #         run: ./inzight
