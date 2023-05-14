@@ -26,6 +26,7 @@ jobs:
       #   run: echo "matrix={\"config\":$(Rscript .github/gen_matrix.R)}" >> $GITHUB_OUTPUT
 
       - name: Set build matrix 2
+        id: set-matrix
         run: echo "matrix=hello" >> "$GITHUB_OUTPUT"
 
   check:
