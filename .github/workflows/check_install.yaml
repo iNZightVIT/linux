@@ -31,6 +31,8 @@ jobs:
 
     runs-on: ${{ matrix.config.os }}-${{ matrix.config.v }}
 
+    continue-on-error: true
+
     name: ${{ matrix.config.os }} ${{ matrix.config.v }} (${{ matrix.config.r }})
 
     strategy:
@@ -51,11 +53,14 @@ jobs:
         run: |
           sudo apt-get install -y $(cat builds/${{ matrix.config.os }}/${{ matrix.config.v }}/dependencies.txt)
 
-      # - name: Install iNZight with `make`
-      #   run: make
+      - name: Install iNZight with `make`
+        run: make
 
       - name: Check UI loads
         uses: coactions/setup-xvfb@v1
         with:
           run: Rscript .github/check_inzight.R
+
+      - name: Write R version
+        run: echo ${{ matrix.config.r }} >> builds/${{ matrix.config.os }}/${{ matrix.config.v }}/rversion.txt
 # create table for README
