@@ -58,3 +58,4 @@ jobs:
         uses: coactions/setup-xvfb@v1
         with:
           run: Rscript .github/check_inzight.R
+# create table for README
