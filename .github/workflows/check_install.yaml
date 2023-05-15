@@ -26,21 +26,6 @@ jobs:
         id: set-matrix
         run: echo "matrix={\"config\":$(Rscript .github/gen_matrix.R)}" >> $GITHUB_OUTPUT
 
-  check:
-    name: check output
-    needs: create_job_matrix
-    runs-on: ubuntu-22.04
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Check matrix
-        env:
-          MATRIX: ${{ needs.create_job_matrix.outputs.matrix }}
-        run: |
-          echo "This is the thing:"
-          echo "$MATRIX"
-          echo "---- end ----"
-
   install:
     needs: create_job_matrix
 
@@ -64,7 +49,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          sudo apt-get install -y builds/$(cat ${{ matrix.config.os }}/${{ matrix.config.v }}/dependencies.txt)
+          sudo apt-get install -y $(cat builds/${{ matrix.config.os }}/${{ matrix.config.v }}/dependencies.txt)
 
       - name: Install iNZight with `make`
         run: make
