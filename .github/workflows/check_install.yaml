@@ -57,4 +57,4 @@ jobs:
       - name: Check UI loads
         uses: coactions/setup-xvfb@v1
         with:
-          run: ./inzight
+          run: Rscript .github/check_inzight.R
