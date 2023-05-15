@@ -51,8 +51,8 @@ jobs:
         run: |
           sudo apt-get install -y $(cat builds/${{ matrix.config.os }}/${{ matrix.config.v }}/dependencies.txt)
 
-      - name: Install iNZight with `make`
-        run: make
+      # - name: Install iNZight with `make`
+      #   run: make
 
       - name: Check UI loads
         uses: coactions/setup-xvfb@v1
