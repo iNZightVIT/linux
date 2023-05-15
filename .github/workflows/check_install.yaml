@@ -67,7 +67,7 @@ jobs:
         run: echo "rversion=$(Rscript -e 'cat(as.character(getRversion()))')" >> $GITHUB_OUTPUT
 
   check:
-    needs: create_job_matrix
+    needs: install
     runs-on: ubuntu-latest
 
     steps:
