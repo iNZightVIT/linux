@@ -30,6 +30,8 @@ jobs:
     needs: create_job_matrix
 
     runs-on: ${{ matrix.config.os }}-${{ matrix.config.v }}
+    outputs:
+      rversion: ${{ steps.set-matrix.outputs.matrix }}
 
     continue-on-error: true
 
@@ -62,5 +64,16 @@ jobs:
           run: Rscript .github/check_inzight.R
 
       - name: Write R version
-        run: echo ${{ matrix.config.r }} >> builds/${{ matrix.config.os }}/${{ matrix.config.v }}/rversion.txt
-# create table for README
+        run: echo "rversion=$(Rscript -e 'cat(as.character(getRversion()))')" >> $GITHUB_OUTPUT
+
+  check:
+    needs: create_job_matrix
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: check outputs
+        env:
+          RVERSIONS: ${{ needs.create_job_matrix.outputs.rversion }}
+        run: |
+          echo "Here is the output"
+          echo $RVERSIONS
