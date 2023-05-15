@@ -31,7 +31,7 @@ jobs:
 
     runs-on: ${{ matrix.config.os }}-${{ matrix.config.v }}
     outputs:
-      rversion: ${{ steps.set-matrix.outputs.matrix }}
+      RVERSIONS: ${{ steps.set-matrix.outputs.rversion }}
 
     continue-on-error: true
 
