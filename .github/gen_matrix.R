@@ -16,7 +16,7 @@ builds <- lapply(os,
 }
 )
 json <- jsonlite::toJSON(do.call(c, builds), auto_unbox = TRUE)
-json_esc <- gsub("\"", "\\\\\"", as.character(json))
+json_esc <- gsub("\"", "\\\"", as.character(json))
 
 cat(json_esc)
 
